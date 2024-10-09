@@ -1,5 +1,9 @@
 package com.demo_microservice.domain.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +20,18 @@ public class ProductoServiceImplement implements ProductoService {
 
 	@Override
 	public ProductoResult insertarProducto(ProductoRecord productoRecord) {
+		
 		ProductoEntity productoEntity = new ProductoEntity();
+		productoEntity.setId(productoRecord.getId());
 		productoEntity.setCodigo(productoRecord.getCodigo());
-		productoEntity.setNombre(productoRecord.getCodigo());
+		productoEntity.setNombre(productoRecord.getNombre());
 		productoEntity.setDescripcion(productoRecord.getDescripcion());
-		productoEntity.setFechaRegistro(productoRecord.getFechaRegistro());
+		
+		LocalDate hoy = LocalDate.now();
+		LocalTime ahora = LocalTime.now();
+		LocalDateTime fechaActual = LocalDateTime.of(hoy, ahora);
+
+		productoEntity.setFechaRegistro(fechaActual);
 
 		productoCrudRepository.save(productoEntity);
 

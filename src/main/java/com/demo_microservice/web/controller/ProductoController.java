@@ -1,5 +1,7 @@
 package com.demo_microservice.web.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +22,7 @@ public class ProductoController {
 	ProductoServiceImplement productoServiceImplement;
 
 	@PostMapping("/save")
-	ResponseEntity<ProductoResult> saveProduct(@RequestBody ProductoRecord productoRecord) {
+	ResponseEntity<ProductoResult> saveProduct(@RequestBody @Valid ProductoRecord productoRecord) {
 
 		return new ResponseEntity<>(productoServiceImplement.insertarProducto(productoRecord), HttpStatus.OK);
 	}

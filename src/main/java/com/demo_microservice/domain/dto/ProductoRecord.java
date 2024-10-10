@@ -1,6 +1,5 @@
 package com.demo_microservice.domain.dto;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -18,7 +17,7 @@ public class ProductoRecord {
 	@NotNull
 	@Size(min = 2, max = 50)
 	private String nombre;
-	@Max(80)
+	@Size(min = 2, max = 80)
 	private String descripcion;
 
 }

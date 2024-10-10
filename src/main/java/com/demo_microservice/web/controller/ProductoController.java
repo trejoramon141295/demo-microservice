@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.demo_microservice.domain.dto.ProductoRecord;
 import com.demo_microservice.domain.dto.ProductoResult;
+import com.demo_microservice.domain.dto.Response;
 import com.demo_microservice.domain.service.ProductoServiceImplement;
 
 import io.swagger.annotations.ApiOperation;
@@ -26,7 +27,7 @@ public class ProductoController {
 	@ApiOperation(value = "Guardar Producto"
             ,notes = "El siguiente micro-servicio hace un registro de un producto nuevo a la BD")
 	@PostMapping("/save")
-	ResponseEntity<ProductoResult> saveProduct(@RequestBody @Valid ProductoRecord productoRecord) {
+	ResponseEntity<Response> saveProduct(@RequestBody @Valid ProductoRecord productoRecord) {
 
 		return new ResponseEntity<>(productoServiceImplement.insertarProducto(productoRecord), HttpStatus.OK);
 	}
